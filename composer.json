@@ -19,10 +19,33 @@
         "public-files": [
             "assets/*",
             "favicon.ico"
+        ],
+        "project-files-installed": [
+            "app/.htaccess",
+            "app/_config.php",
+            "app/_config/mysite.yml",
+            "app/src/Page.php",
+            "app/src/PageController.php"
+        ],
+        "public-files-installed": [
+            ".htaccess",
+            "index.php",
+            "install-frameworkmissing.html",
+            "install.php",
+            "web.config"
+        ],
+        "expose": [
+            "themes/my-theme/css",
+            "themes/my-theme/images",
+            "themes/my-theme/javascript",
+            "themes/my-theme/fonts"
         ]
     },
     "config": {
-        "process-timeout": 600
+        "process-timeout": 600,
+        "platform": {
+
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
