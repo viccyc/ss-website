@@ -3,6 +3,9 @@
 namespace SilverStripe\Lessons;
 
 use Page;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
+use SilverStripe\Assets\File;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -17,13 +20,30 @@ class ArticlePage extends Page
         'Author' => 'Varchar',
     ];
 
+	private static $has_one = [
+	    'Photo' => Image::class,
+        'Brochure' => File::class
+    ];
+
+	private static $owns = [
+	    'Photo',
+        'Brochure',
+    ];
+
 	public function getCMSFields() {
 	    $fields = parent::getCMSFields();
-	    $fields->addFieldsToTab('Root.Main', DateField::create('Date', 'Date of article'), 'Content');
-	    $fields->addFieldsToTab('Root.Main', TextareaField::create('Teaser')
+	    $fields->addFieldToTab('Root.Main', DateField::create('Date', 'Date of article'), 'Content');
+	    $fields->addFieldToTab('Root.Main', TextareaField::create('Teaser')
             ->setDescription('This is the summary that appears on the article list page.'), 'Content');
-	    $fields->addFieldsToTab('Root.Main', TextField::create('Author', 'Author of article'), 'Content');
+	    $fields->addFieldToTab('Root.Main', TextField::create('Author', 'Author of article'), 'Content');
+	    $fields->addFieldToTab('Root.Attachments', $photo = UploadField::create('Photo'));
+	    $fields->addFieldToTab('Root.Attachments', $brochure = UploadField::create('Brochure', 'Travel brochure, optional (PDF only)'));
 
-	    return $fields;
+	    $photo->setFolderName('travel-photos');
+        $brochure
+            ->setFolderName('travel-brochures')
+            ->getValidator()->setAllowedExtensions(['pdf']);
+
+        return $fields;
     }
 }

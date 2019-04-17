@@ -33,6 +33,7 @@
 			<% include TopBar %>
 			<% include MainNav %>
 		</header>
+
 		$Layout
 		<% include Footer %>
 	</div>

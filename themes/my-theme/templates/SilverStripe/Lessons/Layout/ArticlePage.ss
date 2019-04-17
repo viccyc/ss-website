@@ -3,31 +3,33 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-		
+
 			<!-- BEGIN MAIN CONTENT -->
 			<div class="main col-sm-8">
-			
+
 				<h1 class="blog-title">$Title</h1>
-				
+
 				<div class="blog-main-image">
-					<img src="http://placehold.it/765x362" alt="" />
+                    <% with $Photo.ScaleWidth(750) %>
+                        <img class="my-custom-class" src="$URL" alt="" width="$Width" height="$Height" />
+                    <% end_with %>
 					<div class="tag"><i class="fa fa-file-text"></i></div>
 				</div>
-				
+
 				<div class="blog-bottom-info">
 					<ul>
 						<li><i class="fa fa-calendar"></i> July 30, 2014</li>
 						<li><i class="fa fa-comments-o"></i> 3 Comments</li>
 						<li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
 					</ul>
-					
+
 					<div id="post-author"><i class="fa fa-pencil"></i> By John Doe</div>
 				</div>
-				
+
 				<div class="post-content">
 					$Content
 				</div>
-				
+
 				<div class="share-wraper col-sm-12 clearfix">
 					<h5>Share this Post:</h5>
 					<ul class="social-networks">
@@ -37,14 +39,24 @@
 						<li><a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://www.wiselythemes.com/html/cozy/blog-detail.html&amp;description=Cozy%20Blog%20Post&amp;media=http%3A%2F%2Fwww.wiselythemes.com%2Fhtml%2Fcozy%2Fimages%2Fnews-img1.jpg"><i class="fa fa-pinterest"></i></a></li>
 						<li><a href="mailto:?subject=Check%20out%20this%20blog%20post%20from%20Cozy%20Real%20Estate!&amp;body=http://www.wiselythemes.com/html/cozy/blog-detail.html"><i class="fa fa-envelope"></i></a></li>
 					</ul>
-					
+
 					<a class="print-button" href="javascript:window.print();">
 						<i class="fa fa-print"></i>
 					</a>
 				</div>
-				
+
+                <% if $Brochure %>
+                    <div class="row">
+                        <% with $Brochure %>
+                            <div class="col-sm-12">
+                                <a href="$URL" class="btn btn-warning btn-block"><i class="fa fa-download"></i> Download brochure [$Extension] ($Size)</a>
+                            </div>
+                        <% end_with %>
+                    </div>
+                <% end_if %>
+
 				<h1 class="section-title">Comments</h1>
-				
+
 				<div class="comments">
 					<ul>
 						<li>
@@ -74,40 +86,40 @@
 							</div>
 						</li>
 					</ul>
-					
+
 					<div class="comments-form">
 						<div class="col-sm-12">
 							<h3>Leave a Reply</h3>
 							<p>Your email address will no be published. Required fields are marked*</p>
 						</div>
-						
+
 						<form class="form-style">
 							<div class="col-sm-6">
 								<input type="text" name="Name" placeholder="Name*" class="form-control" />
 							</div>
-							
+
 							<div class="col-sm-6">
 								<input type="email" name="Email" placeholder="Email*" class="form-control"  />
 							</div>
-							
+
 							<div class="col-sm-12">
-								<textarea name="Comment" placeholder="Comment*" class="form-control"></textarea> 
+								<textarea name="Comment" placeholder="Comment*" class="form-control"></textarea>
 							</div>
-							
+
 							<div class="center">
 								<button type="submit" class="btn btn-default-color btn-lg">Post Comment</button>
 							</div>
 						</form>
 					</div>
 				</div>
-				
-			</div>	
+
+			</div>
 			<!-- END MAIN CONTENT -->
-			
-			
+
+
 			<!-- BEGIN SIDEBAR -->
 			<div class="sidebar gray col-sm-4">
-				
+
 				<h2 class="section-title">Categories</h2>
 				<ul class="categories">
 					<li><a href="#">Business <span>(2)</span></a></li>
@@ -118,7 +130,7 @@
 					<li><a href="#">Properties for Sale <span>(1)</span></a></li>
 					<li><a href="#">Real Estate <span>(1)</span></a></li>
 				</ul>
-				
+
 				<!-- BEGIN ARCHIVES ACCORDION -->
 				<h2 class="section-title">Archives</h2>
 				<div id="accordion" class="panel-group blog-accordion">
@@ -144,7 +156,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="panel">
 						<div class="panel-heading">
 							<div class="panel-title">
@@ -165,7 +177,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="panel">
 						<div class="panel-heading">
 							<div class="panel-title">
@@ -187,8 +199,8 @@
 					</div>
 				</div>
 				<!-- END  ARCHIVES ACCORDION -->
-				
-				
+
+
 				<!-- BEGIN TAGS -->
 				<h2 class="section-title">Tags</h2>
 				<ul class="tags col-sm-12">
@@ -204,8 +216,8 @@
 					<li><a href="#">Rent</a></li>
 				</ul>
 				<!-- BEGIN TAGS -->
-				
-				
+
+
 				<!-- BEGIN LATEST NEWS -->
 				<h2 class="section-title">Latest News</h2>
 				<ul class="latest-news">
@@ -214,11 +226,11 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 30, 2014</li>
 						</ul>
-							
+
 						<h3><a href="blog-detail.html">How to get your dream property for the best price?</a></h3>
 					</li>
 					<li class="col-md-12">
@@ -226,11 +238,11 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 24, 2014</li>
 						</ul>
-							
+
 						<h3><a href="blog-detail.html">7 tips to get the best mortgage.</a></h3>
 					</li>
 					<li class="col-md-12">
@@ -238,16 +250,16 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 05, 2014</li>
 						</ul>
-						
+
 						<h3><a href="blog-detail.html">House, location or price: What's the most important factor?</a></h3>
 					</li>
 				</ul>
 				<!-- END LATEST NEWS -->
-				
+
 			</div>
 			<!-- END SIDEBAR -->
 
