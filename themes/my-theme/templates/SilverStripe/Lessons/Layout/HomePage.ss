@@ -1,6 +1,6 @@
 		<!-- BEGIN HOME SLIDER SECTION -->
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators 
+		  <!-- Indicators
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -15,7 +15,7 @@
 				<a href="#" class="caption sfb btn btn-default btn-lg">Learn More</a>
 		      </div>
 		    </div>
-		    <div class="item" id="slide2" style="background: url(http://placehold.it/1920x605) no-repeat left center; background-size: cover;"> 
+		    <div class="item" id="slide2" style="background: url(http://placehold.it/1920x605) no-repeat left center; background-size: cover;">
 		      <div class="carousel-caption">
 				<div class="caption sfr slider-title">The simple life</div>
 				<div class="caption sfl slider-subtitle">Lush gardens in Mordor</div>
@@ -38,9 +38,9 @@
 
 
 
-		</div>		
+		</div>
 		<!-- END HOME SLIDER SECTION -->
-		
+
 		<!-- BEGIN HOME ADVANCED SEARCH -->
 		<div id="home-advanced-search" class="open">
 			<div id="opensearch"></div>
@@ -57,7 +57,7 @@
 										</span>
 									</div>
 								</div>
-								
+
 								<div class="form-control-small">
 									<select id="search_status" name="search_status" data-placeholder="Stay...">
 										<option value=""> </option>
@@ -77,7 +77,7 @@
 										<option value="14">14 Nights</option>
 									</select>
 								</div>
-								
+
 								<div class="form-control-small">
 									<select id="search_bedrooms" name="search_bedrooms" data-placeholder="Bedrooms">
 										<option value=""> </option>
@@ -102,13 +102,13 @@
 			</div>
 		</div>
 		<!-- END HOME ADVANCED SEARCH -->
-		
-		
+
+
 		<!-- BEGIN CONTENT WRAPPER -->
 		<div class="content">
 			<div class="container">
 				<div class="row">
-				
+
 					<!-- BEGIN MAIN CONTENT -->
 					<div class="main col-sm-8">
 						<h1 class="section-title">Featured Properties</h1>
@@ -130,7 +130,7 @@
 									<li><i class="icon-bathrooms"></i> 3</li>
 								</ul>
 							</div>
-							
+
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="properties-detail.html">
@@ -147,7 +147,7 @@
 									<li><i class="icon-bathrooms"></i> 2</li>
 								</ul>
 							</div>
-							
+
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="properties-detail.html">
@@ -164,7 +164,7 @@
 									<li><i class="icon-bathrooms"></i> 2</li>
 								</ul>
 							</div>
-							
+
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="properties-detail.html">
@@ -181,7 +181,7 @@
 									<li><i class="icon-bathrooms"></i> 2</li>
 								</ul>
 							</div>
-							
+
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="properties-detail.html">
@@ -190,7 +190,7 @@
 									</a>
 									<img src="http://placehold.it/760x670" alt="" />
 								</div>
-								<div class="price">									
+								<div class="price">
 									<span>$840</span><p>per night<p>
 								</div>
 								<ul class="amenities">
@@ -198,7 +198,7 @@
 									<li><i class="icon-bathrooms"></i> 2</li>
 								</ul>
 							</div>
-							
+
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="properties-detail.html">
@@ -207,7 +207,7 @@
 									</a>
 									<img src="http://placehold.it/760x670" alt="" />
 								</div>
-								<div class="price">									
+								<div class="price">
 									<span>$150</span><p>per night<p>
 								</div>
 								<ul class="amenities">
@@ -217,8 +217,8 @@
 							</div>
 						</div>
 
-						
-						
+
+
 						<div class="row">
 							<div class="col-sm-12">
 								<h1 class="section-title">Popular Regions</h1>
@@ -261,37 +261,39 @@
 										</a>
 									</div>
 								</div>
-								
+
 
 							</div>
 						</div>
-						
-						
 
-						
-						
+
+
+
+
 						<h1 class="section-title">Recent Articles</h1>
 						<div class="grid-style1">
-							<div class="item col-md-4">
-								<div class="image">
-									<a href="#">
-										<span class="btn btn-default"><i class="fa fa-file-o"></i> Read More</span>
-									</a>
-									<img src="http://placehold.it/766x515" alt="" />
-								</div>
-								<div class="tag"><i class="fa fa-file-text"></i></div>
-								<div class="info-blog">
-									<ul class="top-info">
-										<li><i class="fa fa-calendar"></i> July 30, 2014</li>
-										<li><i class="fa fa-comments-o"></i> 2</li>
-										<li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
-									</ul>
-									<h3>
-										<a href="#">How to get your dream property for the best price?</a>
-									</h3>
-									<p>Sed rutrum urna id tellus euismod gravida. Praesent placerat, mauris ac pellentesque fringilla, tortor libero condimen.</p>
-								</div>
-							</div>
+                            <% loop $LatestArticles(3) %>
+                                <div class="item col-md-4">
+                                    <div class="image">
+                                        <a href="$Link">
+                                            <span class="btn btn-default"> Read More</span>
+                                        </a>
+                                        $Photo.Fit(220,148)
+                                    </div>
+                                    <div class="tag"><i class="fa fa-file-text"></i></div>
+                                    <div class="info-blog">
+                                        <ul class="top-info">
+                                            <li><i class="fa fa-calendar"></i> $Date.Format('j F, Y')</li>
+                                            <li><i class="fa fa-comments-o"></i> 2</li>
+                                            <li><i class="fa fa-tags"></i> Properties, Prices, best deals</li>
+                                        </ul>
+                                        <h3>
+                                            <a href="$Link">$Title</a>
+                                        </h3>
+                                        <p><% if $Teaser %>$Teaser<% else %>$Content.FirstSentence<% end_if %></p>
+                                    </div>
+                                </div>
+                            <% end_loop %>
 							<div class="item col-md-4">
 								<div class="image">
 									<a href="#">
@@ -333,14 +335,14 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="center"><a href="#" class="btn btn-default-color">View All News</a></div>
 					</div>
 					<!-- END MAIN CONTENT -->
-					
+
 					<!-- BEGIN SIDEBAR -->
 					<div class="sidebar col-sm-4">
-						
+
 						<!-- BEGIN SIDEBAR ABOUT -->
 						<div class="col-sm-12">
 							<h2 class="section-title">Last minute deals</h2>
@@ -350,11 +352,11 @@
 									<a href="blog-detail.html"></a>
 									<img alt="" src="http://placehold.it/100x100">
 								</div>
-								
+
 								<ul class="top-info">
 									<li><i class="fa fa-calendar"></i>Available Now</li>
 								</ul>
-									
+
 								<h4><a href="blog-detail.html">Private Beach</a><p>Lossarnach, Eriado</p></h4>
 							</li>
 							<li class="col-md-12">
@@ -362,11 +364,11 @@
 									<a href="blog-detail.html"></a>
 									<img alt="" src="http://placehold.it/100x100">
 								</div>
-								
+
 								<ul class="top-info">
 									<li><i class="fa fa-calendar"></i>Available on 24 July</li>
 								</ul>
-									
+
 								<h4><a href="blog-detail.html">Mountain views</a><p>Hyarnustar, Rhovanion</p></h4>
 							</li>
 							<li class="col-md-12">
@@ -374,11 +376,11 @@
 									<a href="blog-detail.html"></a>
 									<img alt="" src="http://placehold.it/100x100">
 								</div>
-								
+
 								<ul class="top-info">
 									<li><i class="fa fa-calendar"></i>Available 5 July</li>
 								</ul>
-								
+
 								<h4><a href="blog-detail.html">Heart of the village</a><p>Minhiriath, Eriador</p></h4>
 							</li>
 							<li class="col-md-12">
@@ -386,24 +388,24 @@
 									<a href="blog-detail.html"></a>
 									<img alt="" src="http://placehold.it/100x100">
 								</div>
-								
+
 								<ul class="top-info">
 									<li><i class="fa fa-calendar"></i>Available 6 July</li>
 								</ul>
-								
+
                 <h4><a href="blog-detail.html">The city life</a><p>West Beleriand, Mordor</p></h4>
 							</li></ul>
 							<p class="center"><a class="btn btn-fullcolor" href="#">More deals</a></p>
 						</div>
 						<!-- END SIDEBAR ABOUT -->
-						
-						
+
+
 						<div class="col-sm-12">
 							<h2 class="section-title">Activity</h2>
 							<ul class="activity">
 								<li class="col-lg-12">
 									<a href="#"><img src="http://placehold.it/70x70" alt="" /></a>
-									<div class="info">										
+									<div class="info">
 										<h5>Sam Minnée reviewed <a href="#">The House With No Windows</a></h4>
 										<p>Awesome solitary confinement, mate. Spot on. Sweet as.</p>
 										<h6>Just now</h6>
@@ -419,12 +421,12 @@
 								</li>
 							</ul>
 						</div>
-						
-						
-						
+
+
+
 					</div>
 					<!-- END SIDEBAR -->
-					
+
 				</div>
 			</div>
 		</div>
