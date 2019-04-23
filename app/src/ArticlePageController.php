@@ -24,18 +24,25 @@ class ArticlePageController extends PageController
           //  leaving the labels for the fields blank as they're added with placeholder attributes
           FieldList::create(
               TextField::create('Name', '')
-                  ->setAttribute('placeholder','Name*'),
+                  ->setAttribute('placeholder','Name*')
+                  ->addExtraClass('form-control'),
               EmailField::create('Email', '')
-                  ->setAttribute('placeholder','Email*'),
+                  ->setAttribute('placeholder','Email*')
+                  ->addExtraClass('form-control'),
               TextareaField::create('Comment', '')
                   ->setAttribute('placeholder','Comment*')
+                  ->addExtraClass('form-control')
           ),
           FieldList::create(
               FormAction::create('handleComment', 'Post Comment')
+                  // force it to render a <button> instead of an <input>
+                  ->setUseButtonTag(true)
+                  ->addExtraClass('btn btn-default-color btn-lg')
           ),
           RequiredFields::create('Name', 'Email', 'Comment')
         );
 
+        $form->addExtraClass('form-style');
         return $form;
     }
 }
