@@ -38,6 +38,7 @@ class ArticlePageController extends PageController
 
         ->addExtraClass('form-style');
 
+        // add the extra classes and placeholders dynamically.
         foreach ($form->Fields() as $field) {
             $field->addExtraClass('form-control')
                 ->setAttribute('placeholder', $field->getName().'*');

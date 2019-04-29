@@ -35,6 +35,10 @@ class ArticlePage extends Page
 	    'Categories' => ArticleCategory::class,
     ];
 
+	private static $has_many = [
+	    'Comments' => ArticleComment::class,
+    ];
+
 	public function getCMSFields() {
 	    $fields = parent::getCMSFields();
 	    $fields->addFieldToTab('Root.Main', DateField::create('Date', 'Date of article'), 'Content');
