@@ -47,19 +47,35 @@ class ArticlePageController extends PageController
                 ->setAttribute('placeholder', $field->getName().'*');
         }
 
-        return $form;
+        $data = $this->getRequest()->getSession()->get("FormData.($form-getName()).data");
+
+        return $data ? $form->loadDataFrom($data) : $form;
     }
 
     public function handleComment($data, $form)
     {
+        // form saves state, so that the user doesn't have to repopulate an empty form if its wrong.
+        $session = $this->getRequest()->getSession();
+        $session->set("FormData.($form-getName()).data", $data);
+
+        $existing = $this->Comments()->filter([
+            'Comment' => $data['Comment']
+        ]);
+        if($existing->exists() && strlen($data['Comment']) > 20) {
+            $form->sessionMessage('That comment already exists! Spammer!','bad');
+
+            return $this->redirectBack();
+        }
+
         $comment = ArticleComment::create();
-        $comment->Name = $data['Name'];
-        $comment->Email = $data['Email'];
-        $comment->Comment = $data['Comment'];
         // Create $has_many relation by binding the comment back to the ArticlePage
         $comment->ArticlePageID = $this->ID;
+        // use saveInto method of form class instead of manually assigning each variable
+        $form->saveInto($comment);
         $comment->write();
 
+        // If everything checks out, we clear it, so that the form renders clean on the next page load.
+        $session->clear("FormData.($form-getName()).data");
         $form->sessionMessage('Thanks for your comment!','good');
 
         return $this->redirectBack();
