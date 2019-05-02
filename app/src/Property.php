@@ -12,6 +12,7 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\ArrayLib;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TabSet;
+use SilverStripe\Versioned\Versioned;
 
 class Property extends DataObject {
 
@@ -37,12 +38,45 @@ class Property extends DataObject {
         'FeaturedOnHomepage.Nice' => 'Featured?'
     ];
 
-    // customized search form in the CMS
-    private static $searchable_fields = [
-        'Title',
-        'Region.Title',
-        'FeaturedOnHomepage'
+    // make sure it gets published
+    private static $owns = [
+        'PrimaryPhoto',
     ];
+
+    // ensure they have a draft state
+    private static $extensions = [
+        Versioned::class,
+    ];
+
+    private static $versioned_gridfield_extensions = true;
+
+    // customized search form in the CMS
+    public function searchableFields()
+    {
+        // need to be more explicit about how we want our search form configured
+        // available filters are in framework/src/ORM/Filters
+        return [
+            'Title' => [
+                'filter' => 'PartialMatchFilter',
+                'title' => 'Title',
+                'field' => TextField::class,
+            ],
+            'RegionID' => [
+                'filter' => 'ExactMatchFilter',
+                'title' => 'Region',
+                'field' => DropdownField::create('RegionID')
+                    ->setSource(
+                        Region::get()->map('ID', 'Title')
+                    )
+                    ->setEmptyString('-- Any region --')
+            ],
+            'FeaturedOnHomepage' => [
+                'filter' => 'ExactMatchFilter',
+                'title' => 'Only featured'
+            ]
+        ];
+    }
+
 
     public function getCMSFields()
     {
